@@ -14,12 +14,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
+     "experimentalDecorators": true,
+  "emitDecoratorMetadata": true,
     "paths": {
       "@/*": [
         "*"
       ]
     }
   },
-  "experimentalDecorators": true,
-  "emitDecoratorMetadata": true
 }
