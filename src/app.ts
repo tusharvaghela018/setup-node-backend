@@ -6,6 +6,8 @@ import { Routes } from "@/intergaces/general/route.interface";
 import { NODE_ENV, PORT } from "@/config";
 import logger from "@/utils/logger";
 import db from "@/models";
+import RedisClient from "@/config/Redis";
+import SocketServer from "@/config/Socket";
 
 class App {
     public app: express.Application;
@@ -35,6 +37,7 @@ class App {
             console.info(`=================================`);
         });
         await this.connectToDB();
+        await this.connectRedis();
     };
 
     private initializeMiddleware = () => {
@@ -90,6 +93,9 @@ class App {
 
     private createServer = () => {
         this.server = http.createServer(this.app);
+
+        const socketServer = SocketServer.getInstance()
+        socketServer.initialize(this.server);
     };
 
     private connectToDB = async (): Promise<void> => {
@@ -100,6 +106,10 @@ class App {
             console.error("Failed to connect to DB", error);
         }
     };
+    private connectRedis = async () => {
+        const redis = RedisClient.getInstance();
+        await redis.connect();
+    }
 }
 
 export default App;

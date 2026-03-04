@@ -14,8 +14,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
-     "experimentalDecorators": true,
-  "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
     "paths": {
       "@/*": [
         "*"
