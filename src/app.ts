@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import http from "http";
 import expressWinston from "express-winston";
 import cors from "cors";
-import { Routes } from "@/intergaces/general/route.interface";
+import { Routes } from "@/interfaces/general/route.interface";
 import { NODE_ENV, PORT } from "@/config";
 import logger from "@/utils/logger";
 import db from "@/models";
@@ -106,6 +106,7 @@ class App {
             console.error("Failed to connect to DB", error);
         }
     };
+
     private connectRedis = async () => {
         const redis = RedisClient.getInstance();
         await redis.connect();
